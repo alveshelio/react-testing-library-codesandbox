@@ -1,0 +1,10 @@
+{
+    "en": {
+        "translation": {
+            "firstname": "First Name"
+        },
+        "customNameSpace": {
+            "title": "Custom NameSpace title"
+        }
+  }
+}

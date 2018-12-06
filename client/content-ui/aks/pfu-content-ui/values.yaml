@@ -1,0 +1,4 @@
+serviceName: "pfu-content-ui"
+dockerRepositoryName: "pfu/content-ui"
+dockerTag: "latest"
+dockerPort: 80

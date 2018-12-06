@@ -1,0 +1,10 @@
+{
+    "fr": {
+        "translation": {
+            "firstname": "Prénom"
+        },
+        "customNameSpace": {
+            "title": "NameSpace custom titre"
+        }
+  }
+}

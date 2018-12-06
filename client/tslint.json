@@ -1,0 +1,34 @@
+{
+  "defaultSeverity": "error",
+  "extends": ["tslint:latest", "tslint-react", "tslint-config-prettier"],
+  "jsRules": {},
+  "rules": {
+    "jsx-key": true,
+    "jsx-alignment": true,
+    "member-access": false,
+    "jsx-curly-spacing": "always",
+    "jsx-equals-spacing": "always",
+    "jsx-no-bind": true,
+    "jsx-no-lambda": false,
+    "jsx-self-close": true,
+    "object-literal-sort-keys": false,
+    "no-submodule-imports": false,
+//    "no-implicit-dependencies": false,
+    "ordered-imports": false,
+    "interface-name": false,
+    "no-console": false,
+    "jsx-wrap-multiline": true,
+    "jsx-space-before-trailing-slash": true,
+    "semicolon": [true, "never"],
+    "no-implicit-dependencies": [true, ["containers", "types", "pages", "templates", "models", "services", "api", "assets", "constants", "history", "react-testing-library", "jest-dom"]]
+  },
+  "linterOptions": {
+    "exclude": [
+      "config/**/*.js",
+      "node_modules/**/*.ts"
+    ]
+  },
+  "rulesDirectory": [
+    "node_modules/tslint-eslint-rules/dist/rules"
+  ]
+}

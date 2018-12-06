@@ -1,0 +1,56 @@
+{
+	"compilerOptions": {
+		"outDir": "./dist/",
+		"module": "esnext",
+		"moduleResolution": "node",
+		"target": "es2015",
+		"jsx": "react",
+		"allowJs": true,
+		"sourceMap": true,
+		"noImplicitAny": true,
+		"esModuleInterop": true,
+		"baseUrl": "./src/",
+		"rootDir": "./",
+		"paths": {
+			"containers/*": [
+				"containers/*"
+			],
+			"types": [
+				"types/*"
+			],
+			"pages/*": [
+				"pages/*"
+			],
+			"templates/*": [
+				"templates/*"
+			],
+			"models/*": [
+				"models/*"
+			],
+			"api/*": [
+				"api/*"
+			],
+			"services/*": [
+				"services/*"
+			],
+			"constants/*": [
+				"constants/*"
+			],
+			"assets/*": [
+				"assets/*"
+			],
+		}
+	},
+	"exclude": [
+		"node_modules",
+		".src/__tests__",
+		"**/*.test.ts",
+		"**/*.spec.ts",
+		"build",
+		"scripts",
+		"acceptance-tests",
+		"webpack",
+		"jest",
+		"src/setupTests.ts"
+	]
+}

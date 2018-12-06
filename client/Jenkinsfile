@@ -1,0 +1,101 @@
+// Pipeline to build a java application
+
+// Name: build-<application-name>
+
+// Definition
+//      Type: Pipeline script from SCM
+//      SCM: GIT
+//      Repository URL: git@bitbucket.org:groupemedia/<application-name>
+//      Credentials: git (Bitbucket ssh key)
+//      Script Path: /Jenkinsfile
+//
+// Create Multibranch Pipeline job
+//      Branch Sources:
+//         Credentials: devops@quebecormedia.com
+//         Owner: groupmedia
+//         Repository Name: <application-name>
+//         Behaviors: 
+//              Discover Branches -> Strategy: All Branches
+//              Discover pull requests from origin - Stategy: Merging the pr with the current target branch revision 
+//              Wipe out repository & force clone
+//         Property strategy:  All branches get the same property
+//
+//      Build Configuration:   Mode:   by Jenkinsfile  ->  Script Path: Jenkinsfile
+//
+//      Scan Multibranch Pipeline Triggers: 30 minutes
+
+@Library('Common')
+import globalFunction.*
+
+pipeline {
+
+    agent any
+
+    options {
+        buildDiscarder(logRotator(artifactNumToKeepStr: '30', numToKeepStr: '30'))
+        disableConcurrentBuilds()
+    }
+
+    triggers {
+        bitbucketPush()
+    }
+
+    tools {
+	nodejs "node10.9.0"
+    }
+
+    stages {
+
+        stage('Log') {
+             steps {
+                 script {
+                     sh "set"
+                 }
+             }
+        }
+
+        stage("Build & Test") {
+            steps {
+                script {
+                    pfu.buildNodeStage()
+                }
+            }
+        }
+
+        stage("Package") {
+            steps {
+                script {
+                    pfu.packageNodeStage()
+                }
+            }
+        }
+
+        stage("Publish") {
+            steps {
+                script {
+                    pfu.publishNodeStage()
+                }
+            }
+        }
+
+        stage("Release") {
+            steps {
+                script {
+                    pfu.releaseNodeStage()
+                }
+            }
+        }
+
+    }
+
+    post {
+
+        failure {
+            script {
+                qmicommon.broadcastErrorMessage("#pfu-jenkins-fail", "${env.JOB_NAME}", "${env.BUILD_NUMBER}", "${env.BUILD_URL}")
+            }
+        }
+
+    }
+
+}

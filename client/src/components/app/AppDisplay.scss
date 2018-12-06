@@ -1,0 +1,9 @@
+$color: deeppink;
+.FirstName {
+  font-size: 30px;
+  user-select: none;
+  span {
+    color: $color;
+    text-transform: uppercase;
+  }
+}
