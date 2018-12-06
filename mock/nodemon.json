@@ -1,4 +1,0 @@
-{
-  "watch": ["src", "config"],
-  "exec": "babel-node"
-}
