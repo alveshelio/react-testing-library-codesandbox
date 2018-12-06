@@ -20,8 +20,7 @@ lib-cov
 build/Release
 
 # Dependency directories
-/client/node_modules/
-/mock/node_modules/
+node_modules/
 jspm_packages/
 
 # Optional npm cache directory
@@ -43,9 +42,7 @@ jspm_packages/
 .cache
 
 #dist
-/client/dist
-/mock/dist
+dist
 
 #IDE
 .idea
-/client/src/i18n/combined.json
